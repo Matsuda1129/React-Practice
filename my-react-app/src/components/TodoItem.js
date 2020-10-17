@@ -7,7 +7,7 @@ const TodoItem = (props) => {
         <td>{props.todo.title}</td>
         <td>
           <button value="作業中">作業中</button>
-          <button value="削除">削除</button>
+          <button value="削除" onClick={() => props.deleteTodo(props.todo)}>削除</button>
         </td>
       </tr>
   )

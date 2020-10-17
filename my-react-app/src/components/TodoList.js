@@ -7,6 +7,7 @@ const TodoList = (props) => {
       <TodoItem
       index={index}
       todo={todo}
+      deleteTodo={props.deleteTodo}
       />
     )
   });
