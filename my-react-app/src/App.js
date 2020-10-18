@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
+import RadioButton from './components/RadioButton';
 
 const todos = [];
+const radio = [
+  {id: 0, name: "select", value: "すべて", checked: true },
+  {id: 1, name: "select", value: "作業中", checked: false },
+  {id: 2, name: "select", value: "完了", checked: false },
+];
 
 class App extends Component {
 
@@ -10,12 +16,14 @@ class App extends Component {
     super()
     this.state = {
       todos: todos,
+      radio: radio,
       item: ''
     };
     this.updateItem = this.updateItem.bind(this);
     this.addTodo = this.addTodo.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
     this.changeButton = this.changeButton.bind(this);
+    this.handleRadioClick = this.handleRadioClick.bind(this);
   }
 
   addTodo(e) {
@@ -65,24 +73,39 @@ class App extends Component {
       todos[pos].status = "作業中";
       console.log('作業中です')
     }
-   console.log(todos)
+    console.log(todos)
     this.setState({
       todos: todos
     });
-    
+  }
+
+  handleRadioClick(r) {
+    const radio = this.state.radio.slice();
+    radio.forEach(function (radio, index) {
+      radio.checked = false;
+      console.log(radio.checked); 
+    })
+    r.checked = true 
+    console.log(radio);
+
+    this.setState({
+      radio: radio
+    });
   }
 
   render() {
     return (
       <div className="container">
         <h1>ToDo リスト</h1>
-        <input type="radio" />すべて
-        <input type="radio" />作業中
-        <input type="radio" />削除
+        <RadioButton
+         radio={this.state.radio}
+         handleRadioClick={this.handleRadioClick}
+        />
         <TodoList
           todos={this.state.todos}
           deleteTodo={this.deleteTodo}
           changeButton={this.changeButton}
+          radio={this.state.radio}
         />
         <TodoForm
           todos={this.state.todos}
