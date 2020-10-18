@@ -8,6 +8,7 @@ const TodoList = (props) => {
       index={index}
       todo={todo}
       deleteTodo={props.deleteTodo}
+      changeButton={props.changeButton}
       />
     )
   });

@@ -15,6 +15,7 @@ class App extends Component {
     this.updateItem = this.updateItem.bind(this);
     this.addTodo = this.addTodo.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
+    this.changeButton = this.changeButton.bind(this);
   }
 
   addTodo(e) {
@@ -26,6 +27,7 @@ class App extends Component {
 
     const item = {
       title: this.state.item,
+      status: "作業中"
     };
 
     const todos = this.state.todos.slice();
@@ -53,6 +55,23 @@ class App extends Component {
     });
   }
 
+  changeButton(todo) {
+    const todos = this.state.todos.slice();
+    const pos = this.state.todos.indexOf(todo);
+    if (todos[pos].status == "作業中") {
+      todos[pos].status = "完了";
+      console.log('完了です')
+    } else {
+      todos[pos].status = "作業中";
+      console.log('作業中です')
+    }
+   console.log(todos)
+    this.setState({
+      todos: todos
+    });
+    
+  }
+
   render() {
     return (
       <div className="container">
@@ -63,6 +82,7 @@ class App extends Component {
         <TodoList
           todos={this.state.todos}
           deleteTodo={this.deleteTodo}
+          changeButton={this.changeButton}
         />
         <TodoForm
           todos={this.state.todos}

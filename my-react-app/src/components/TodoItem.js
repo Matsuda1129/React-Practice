@@ -6,8 +6,8 @@ const TodoItem = (props) => {
         <td>{props.index}</td>
         <td>{props.todo.title}</td>
         <td>
-          <button value="作業中">作業中</button>
-          <button value="削除" onClick={() => props.deleteTodo(props.todo)}>削除</button>
+          <input type="button" value={props.todo.status} onClick={() => props.changeButton(props.todo)} ></input>
+          <input type="button" value="削除" onClick={() => props.deleteTodo(props.todo)}></input>
         </td>
       </tr>
   )
