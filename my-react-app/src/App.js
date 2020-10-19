@@ -31,7 +31,6 @@ class App extends Component {
       todos: todos,
       item: ''
     });
-
   }
 
   updateItem(e) {
@@ -68,10 +67,8 @@ class App extends Component {
           updateItem={this.updateItem}
         />
       </div>
-
     );
   }
-
 }
 
 export default App;
