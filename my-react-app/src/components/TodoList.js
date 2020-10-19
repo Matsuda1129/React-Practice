@@ -2,15 +2,6 @@ import React from 'react';
 import TodoItem from './TodoItem';
 
 const TodoList = (props) => {
-  const todos = props.todos.map((todo, index)=> {
-    return (
-      <TodoItem
-      index={index}
-      todo={todo}
-      deleteTodo={props.deleteTodo}
-      />
-    )
-  });
   return (
     <table>
       <tr>
@@ -18,7 +9,13 @@ const TodoList = (props) => {
         <td>コメント</td>
         <td>状態</td>
       </tr>
-      {todos}
+      {props.todos.map((todo, index) => (
+  <TodoItem 
+    index={index} 
+    todo={todo}
+    deleteTodo={props.deleteTodo}
+    />
+))}
     </table>
   )
 }
