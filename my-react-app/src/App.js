@@ -8,16 +8,18 @@ class App extends Component {
 
   constructor() {
     super()
-    this.state = {
-      todos: todos,
-      item: ''
-    };
+    this.state = { todos, item: '' };
     this.updateItem = this.updateItem.bind(this);
     this.addTodo = this.addTodo.bind(this);
+    this.deleteTodo = this.deleteTodo.bind(this);
   }
 
   addTodo(e) {
     e.preventDefault();
+
+    if (this.state.item.trim() === '') {
+      return;
+    }
 
     const item = {
       title: this.state.item,
@@ -26,14 +28,24 @@ class App extends Component {
     const todos = this.state.todos.slice();
     todos.push(item);
     this.setState({
-      todos: todos
+      todos: todos,
+      item: ''
     });
-
   }
 
   updateItem(e) {
     this.setState({
       item: e.target.value
+    });
+  }
+
+  deleteTodo(todo) {
+    const todos = this.state.todos.slice();
+    const pos = this.state.todos.indexOf(todo);
+
+    todos.splice(pos, 1);
+    this.setState({
+      todos: todos
     });
   }
 
@@ -46,6 +58,7 @@ class App extends Component {
         <input type="radio" />削除
         <TodoList
           todos={this.state.todos}
+          deleteTodo={this.deleteTodo}
         />
         <TodoForm
           todos={this.state.todos}
@@ -54,10 +67,8 @@ class App extends Component {
           updateItem={this.updateItem}
         />
       </div>
-
     );
   }
-
 }
 
 export default App;
