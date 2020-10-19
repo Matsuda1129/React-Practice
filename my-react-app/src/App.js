@@ -8,10 +8,7 @@ class App extends Component {
 
   constructor() {
     super()
-    this.state = {
-      todos: todos,
-      item: ''
-    };
+    this.state = { todos, item: '' };
     this.updateItem = this.updateItem.bind(this);
     this.addTodo = this.addTodo.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
