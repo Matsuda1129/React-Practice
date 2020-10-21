@@ -5,20 +5,16 @@ import RadioButton from './components/RadioButton';
 
 const todos = [];
 const radio = [
-  {id: 0, name: "select", value: "すべて", checked: true },
-  {id: 1, name: "select", value: "作業中", checked: false },
-  {id: 2, name: "select", value: "完了", checked: false },
+  { id: 0, name: "select", value: "すべて", checked: true },
+  { id: 1, name: "select", value: "作業中", checked: false },
+  { id: 2, name: "select", value: "完了", checked: false },
 ];
 
 class App extends Component {
 
   constructor() {
     super()
-    this.state = {
-      todos: todos,
-      radio: radio,
-      item: ''
-    };
+    this.state = { todos, radio, item: '' };
     this.updateItem = this.updateItem.bind(this);
     this.addTodo = this.addTodo.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
@@ -29,7 +25,7 @@ class App extends Component {
   addTodo(e) {
     e.preventDefault();
 
-    if (this.state.item.trim() === '') {
+    if (!this.state.item.trim()) {
       return;
     }
 
@@ -44,7 +40,6 @@ class App extends Component {
       todos: todos,
       item: ''
     });
-
   }
 
   updateItem(e) {
@@ -83,9 +78,9 @@ class App extends Component {
     const radio = this.state.radio.slice();
     radio.forEach(function (radio, index) {
       radio.checked = false;
-      console.log(radio.checked); 
+      console.log(radio.checked);
     })
-    r.checked = true 
+    r.checked = true
     console.log(radio);
 
     this.setState({
@@ -98,8 +93,8 @@ class App extends Component {
       <div className="container">
         <h1>ToDo リスト</h1>
         <RadioButton
-         radio={this.state.radio}
-         handleRadioClick={this.handleRadioClick}
+          radio={this.state.radio}
+          handleRadioClick={this.handleRadioClick}
         />
         <TodoList
           todos={this.state.todos}
