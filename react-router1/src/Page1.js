@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import FirstForm from './components/FirstForm'
 import './App.css';
 import PropTypes from 'prop-types'  
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {Link} from 'react-router-dom'
 
 const years =  [
@@ -72,11 +71,9 @@ render(){
     months = {this.state.months}
     days = {this.state.days}
     />
-    <div onClick={this.handleToPage2} className="NextButton">次へ進む　≻ 
-    </div>
-    <Router>
-    <Link to ="./Page2">Page2</Link>
-    </Router>
+
+    <Link to ="./Page2" className="NextButton">次へ進む　≻ </Link>
+
 </div>
   )
 }

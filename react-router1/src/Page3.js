@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Link } from 'react-router-dom'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class Page3 extends Component {
 
@@ -18,17 +17,12 @@ class Page3 extends Component {
             <textarea></textarea>
           </div>
         </div>
-        <div>
-          <Router>
-            <Link to="/Page2"
-              className="NextButton1">前に戻る　≻
-      </Link>
-            <Link to="/Page3"
-              className="NextButton2">次へ進む　≻
-      </Link>
-          </Router>
-        </div>
+        <Link to="/Page2"
+          className="NextButton1">前に戻る　≻</Link>
+        <Link to="/Page3"
+          className="NextButton2">次へ進む　≻</Link>
       </div>
+
     )
   }
 }

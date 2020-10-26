@@ -13,8 +13,10 @@ const FirstForm = (props) => {
         </div>
         <div className="StatusForm">
           <div style={{ color: "blue" }}>-性別-</div>
-          <input type="radio" />男性
-          <input type="radio" />女性
+          <form>
+          <input type="radio" name="gender"/>男性
+          <input type="radio" name="gender" />女性
+          </form>
           <div style={{ color: "blue" }}>-生年月日-</div>
           <div className="MainPullDown">
             <PullDownYear className="SubPullDown"

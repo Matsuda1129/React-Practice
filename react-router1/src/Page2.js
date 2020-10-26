@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Link} from 'react-router-dom'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import PropTypes from 'prop-types'  
+import Question1 from './components2/Question1'  
+import Question2 from './components2/Question2'  
+import Question3 from './components2/Question3'  
 import {withRouter} from 'react-router-dom';
 
 class Page2 extends Component {
 
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  }
 
   render() {
     return (
@@ -22,25 +18,17 @@ class Page2 extends Component {
           <div className="Title2">以下にお答えください</div>
         </div>
         <div className="StatusForm">
-          <div style={{ color: "blue" }}>現在、生命保険に加入されていますか？</div>
-          <input type="radio" />はい
-          <input type="radio" />いいえ
-          <div style={{ color: "blue" }}>現在入院中ですか。または、最近３か月以内に医師の診察・検査の結果、入院・手術をすすめられたことはありますか？</div>
-          <input type="radio" />はい
-          <input type="radio" />いいえ
-          <div style={{ color: "blue" }}>過去５年以内に、病気やけがで、手術をうけたことまたは継続して７日以上の入院をしたことがありますか？</div>
-          <input type="radio" />はい
-          <input type="radio" />いいえ
+          <Question1
+          className="target"
+          />
+          <Question2/>
+          <Question3/>
         </div>
       </div>
-      <Router>
-      <Link to ="/Page1"
-        className="NextButton1">前に戻る　≻
-      </Link>
-      <Link to ="/Page3"
-        className="NextButton2">次へ進む　≻
-      </Link>
-      </Router>
+      
+      <Link to ="/Page1" className="NextButton1">前に戻る　≻ </Link>
+      <Link to ="/Page3" className="NextButton2">次へ進む　≻ </Link>
+     
     </div>
     )
   }
